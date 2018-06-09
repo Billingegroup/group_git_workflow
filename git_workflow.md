@@ -16,7 +16,7 @@ git checkout <branch name>  # checkout to available branch
 git checkout -b <new branch name> # checkout to new branch based on current branch
 git add <path to the file>  # add changes into working history
 git commit  # commit changes
-git push <remote name>  # push local to remote
+git push <remote name>  <branch name>  # push local to remote
 ```
 # Step 0: get all required tools and reference
 1. First you need a [github account](https://github.com/).
@@ -32,11 +32,11 @@ The advantages of forking are:
   2. now this repository is completely under your account, you can do whatever
     you want.
 `fork` can be done through github website:
-[](img/git_fork.png)
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
 
 # Step 2: Clone the git repository to local machine
 1. Go to the repository you wish to work on(ideally under your fork). Click on the green **clone or download** button at the top-right corner.
-[](img/git_clone.png)
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
 1. The link shows here is the identity to this repository. You can then copy it and paste to your terminal and do:
 ```
 git clone <link you just copy>
@@ -54,10 +54,10 @@ Now you have your local copy of your remote repository!
   and ``name of this remote`` can be any name that is meaningful (easy to remember) to you.
 1. To view which remotes your local repository is synced to: 
 ```
-git remote -v
+git remote -a
 ```
 And you might see something similar to this:
-[](img/git_remote_v.png)
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_remote_v.png "")
 1. By default `origin` is always set to the repository you cloned. You can rename any `remote` by doing:
 ```
 git remote rename <old name> <new name>
@@ -96,7 +96,7 @@ git checkout -b <new branch name>
 ```
 git status
 ```
-[](img/git_status.png)
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_status.png "")
 Here you see we have ``Untracked files`` and ``Changes not staged for commit``. The difference between them is as following.
 1. `Git` is all about version control so while you are working you might edit existing files or you might create a new file, which hasn't been included into the working tree yet. The newly created file will be listed as `Untracked files`.
 1. If a file as been added into your working history before, then every time you change it, `git status` will be listed as ``Changes not staged for commit``.
@@ -112,7 +112,7 @@ git commit -m "<commit message>"
 ```
 Usually `git commit` will bring you to something similar to this
 screen shot:
-[](img/git_commit.png)
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_commit.png "")
 The first line is a brief of your commit. It shouldn't be more than a line.
 Starting from the third line, it is the main body of your commit message. You can be as detailed as you want.
 1. It is **important** to make your commit message as clear as possible so that other contributor will be able to trace back.
@@ -131,9 +131,8 @@ your fork but we haven't had any interaction with `upstream` yet. It's always ni
 makes it very easy to compare edits.
 
 1. PR makes it easy to compare difference and start discussions. To issue a PR through github web page:
-[](img/issue_PR.png)
-[](img/create_PR.png)
-
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/issue_PR.png "")
+![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/create_PR.png "")
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
 1. You can alway update your PR by pushing new edits to the same branch under your fork.
 
