@@ -23,7 +23,10 @@ git push <remote name>  <branch name>  # push local to remote
 1. You would also need to have [git](https://git-scm.com/) installed on your computer.
 1. Read chapters 15 and 16 of **Effective Computation in Physics** by
 Scopatz and Huff (it is strongly recommended that you get a copy, but we do have.
-1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because of its powerful features.
+1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because
+  * it's powerful.
+  * it's wildly used in the group, so you can get help easily.
+  * as students you can request a free copy of the full production version!
 
 # Step 1: Fork the repository you wish to contribute
 Forking means you keep the entire copy of certain github repository under your account. 
