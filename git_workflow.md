@@ -31,18 +31,19 @@ Scopatz and Huff (it is strongly recommended that you get a copy, but we do have
 # Step 1: Fork the repository you wish to contribute
 Forking means you keep the entire copy of certain github repository under your account. 
 The advantages of forking are:
-  1. it doesn't affect the original repository, i.e. what was working remains working.
-  2. now this repository is completely under your account, you can do whatever
-    you want.
-`fork` can be done through github website:
+1. it doesn't affect the original repository, i.e. what was working remains working.
+1. now this repository is completely under your account, you can do whatever you want. `fork` can be done through github website:
+
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
 
 # Step 2: Clone the git repository to local machine
-1. Go to the repository you wish to work on(ideally under your fork). Click on the green **clone or download** button at the top-right corner.
+1. Go to the repository you wish to work on(ideally under your fork). Click on the green **clone or download** button at the top-right corner:
+
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
+
 1. The link shows here is the identity to this repository. You can then copy it and paste to your terminal and do:
 ```
-git clone <link you just copy>
+git clone <url just copied>
 ```
 Now you have your local copy of your remote repository!
 
@@ -50,17 +51,19 @@ Now you have your local copy of your remote repository!
 1. Navigate to your the directory you just cloned.
 1. As suggested by the name, `remote` means the repository on `github`. With a ``remote`` setup, you are able to compare the difference, push edits to and pull changes with respect to remote(s).
 1. To add a remote:
-  ```
-  git remote add <name of this remote> <url to the github repository>
-  ```
-  `url to the github repository` can be obtained as we did in the ``clone`` section.
-  and ``name of this remote`` can be any name that is meaningful (easy to remember) to you.
+```
+git remote add <name of this remote> <url to the github repository>
+```
+`url to the github repository` can be obtained as we did in the ``clone`` section.
+and ``name of this remote`` can be any name that is meaningful (easy to remember) to you.
 1. To view which remotes your local repository is synced to: 
 ```
 git remote -a
 ```
-And you might see something similar to this:
+And you might see something similar to this
+
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_remote_v.png "")
+
 1. By default `origin` is always set to the repository you cloned. You can rename any `remote` by doing:
 ```
 git remote rename <old name> <new name>
@@ -99,7 +102,9 @@ git checkout -b <new branch name>
 ```
 git status
 ```
+
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_status.png "")
+
 Here you see we have ``Untracked files`` and ``Changes not staged for commit``. The difference between them is as following.
 1. `Git` is all about version control so while you are working you might edit existing files or you might create a new file, which hasn't been included into the working tree yet. The newly created file will be listed as `Untracked files`.
 1. If a file as been added into your working history before, then every time you change it, `git status` will be listed as ``Changes not staged for commit``.
@@ -134,8 +139,10 @@ your fork but we haven't had any interaction with `upstream` yet. It's always ni
 makes it very easy to compare edits.
 
 1. PR makes it easy to compare difference and start discussions. To issue a PR through github web page:
+
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/issue_PR.png "")
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/create_PR.png "")
+
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
 1. You can alway update your PR by pushing new edits to the same branch under your fork.
 
