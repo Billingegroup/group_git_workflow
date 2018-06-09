@@ -25,7 +25,7 @@ git push <remote name>  <branch name>  # push local to remote
 Scopatz and Huff (it is strongly recommended that you get a copy, but we do have.
 1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because
   * it's powerful.
-  * it's wildly used in the group, so you can get help easily.
+  * it's widely used in the group, so you can get help easily.
   * as students you can request a free copy of the full production version!
 
 # Step 1: Fork the repository you wish to contribute
@@ -37,7 +37,7 @@ The advantages of forking are:
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
 
 # Step 2: Clone the git repository to local machine
-1. Go to the repository you wish to work on(ideally under your fork). Click on the green **clone or download** button at the top-right corner:
+1. Go to the repository you wish to work on (ideally under your fork). Click on the green **clone or download** button at the top-right corner:
 
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
 
