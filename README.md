@@ -22,7 +22,7 @@ git push <remote name>  <branch name>  # push local to remote
 1. First you need a [github account](https://github.com/).
 1. You would also need to have [git](https://git-scm.com/) installed on your computer.
 1. Read chapters 15 and 16 of **Effective Computation in Physics** by
-Scopatz and Huff (it is strongly recommended that you get a copy, but we do have.
+Scopatz and Huff (it is strongly recommended that you get a copy, but we do have).
 1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because
   * it's powerful.
   * it's widely used in the group, so you can get help easily.
@@ -94,9 +94,9 @@ git checkout -b <new branch name>
 ```
 
 # Step 5: Add, commit and push
-1. Before your edits, checkout to a new branch. Since branch is free on
+1. Before your edits, checkout to a new branch. Since creadting a branch is free on
    github, it's **suggested** to keep every branch as granular as possible.
-1. It's also recommended to leave your local master untouched. The main reason will be explained later in the `Pull request`` section.
+1. It's also recommended to leave your local master untouched. The main reason will be explained later in the `Pull request` section.
 1. Start your edits with your favorite editor (we recommand `PyCharm`).
 1. After your edits, put your works into the working tree. To check current working history:
 ```
