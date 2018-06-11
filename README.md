@@ -1,47 +1,76 @@
-# Git workflow
+# Getting started with git workflow
 
 This page is aimed to be a simplified version of github help. For complete workflow,
 please go to [full git documentation](https://guides.github.com/). Also Google and [stackoverflow](https://stackoverflow.com/) is incredibly helpful.
 
+# Workflow example
+Here is an example of the workflow we will cover:
+1. Let's start our new branch on our existing master.
+```
+git checkout master
+```
+1. Let's make sure our local master is up to date with the upstream master.
+```
+git pull upstream master --ff-only
+```
+1. Assuming the pull was successful make a new branch based on master for our issue fix with memorable name.
+```
+git checkout -b add_huskies_to_uw
+```
+1. Work work work, test test test, commit commit commit...
+1. Create a new branch on our fork and push these commits there.
+```
+git push -u origin add_huskies_to_uw
+```
+1. Go to fork on GitHub and create a PR into the main repo using the website.
+1. wait for comments.
+1. fix comments and commit.
+1. Push comments to the same branch and automaticallly update the same PR
+```
+git push origin add_huskies_to_uw
+```
+`git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
+
+# Some useful commands
 Below is a code block for reference. It includes the most basic git commands you will
-use to complete the workflow introduced below. If it's your first time
+use in approximately the order you will need them to complete the workflow introduced below. If it's your first time
 here, skip this block and finish reading the workflow doc first.
 ```git
-git clone <remote url>  # clone a repo
-git remove add <name> <remote url>  # add a remote
-git remove -v  # list all remotes
+git remote add <name> <remote url>  # add a remote
+git remote -v  # list all remotes
 git remote update  # update remotes
+git branch # list all local branches
 git branch -a  # list all available branches
-git checkout <branch name>  # checkout to available branch
-git checkout -b <new branch name> # checkout to new branch based on current branch
-git add <path to the file>  # add changes into working history
-git commit  # commit changes
-git push <remote name>  <branch name>  # push local to remote
+git checkout <branch name>  # check out an already existing branch
+git checkout -b <new branch name> # check out to new branch based on current branch
+git add <filename>  # add changes into working history
+git commit -m "CODE: <my commit message>  # commit changes
+git push origin <branch_name>  # push local branch to branch on your Fork
 ```
+
 # Step 0: get all required tools and reference
 1. First you need a [github account](https://github.com/).
 1. You would also need to have [git](https://git-scm.com/) installed on your computer.
 1. Read chapters 15 and 16 of **Effective Computation in Physics** by
 Scopatz and Huff (it is strongly recommended that you get a copy, but we do have).
 1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because
-  * it's powerful.
-  * it's widely used in the group, so you can get help easily.
-  * as students you can request a free copy of the full production version!
+  * It's powerful.
+  * It makes rebasing much easier.
+  * It's widely used in the group, so you can get help easily.
+  * As students you can request a free copy of the full production version!
 
-# Step 1: Fork the repository you wish to contribute
-Forking means you keep the entire copy of certain github repository under your account. 
-The advantages of forking are:
-1. it doesn't affect the original repository, i.e. what was working remains working.
-1. now this repository is completely under your account, you can do whatever you want. `fork` can be done through github website:
+# Step 1: Fork the repository you wish to contribute to
+Forking will allow you to make a `pull-request` (PR) later. We need it for our workflow, even ifit may not be clear now why. `fork` can be done through github website:
 
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
 
 # Step 2: Clone the git repository to local machine
-1. Go to the repository you wish to work on (ideally under your fork). Click on the green **clone or download** button at the top-right corner:
+1. Go to your fork on GitHub.
+1. Click on the green **clone or download** button at the top-right corner:
 
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
 
-1. The link shows here is the identity to this repository. You can then copy it and paste to your terminal and do:
+1. The link shows here is the identity to this repository. Vlick on the "clipboard icon" to copy the link to your clipboard. You can then copy it and paste to your terminal and do:
 ```
 git clone <url just copied>
 ```
