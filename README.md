@@ -4,7 +4,7 @@ This page is aimed to be a simplified version of github help. For complete workf
 please go to [full git documentation](https://guides.github.com/). Also Google and [stackoverflow](https://stackoverflow.com/) is incredibly helpful.
 
 # Workflow example
-Here is an example of the workflow we will cover:
+Here is an example of the workflow we will cover.
 1. Let's start our new branch on our existing master.
 ```
 git checkout master
@@ -17,25 +17,25 @@ git pull upstream master --ff-only
 ```
 git checkout -b add_huskies_to_uw
 ```
-1. Work work work, test test test, commit commit commit...
+1. Work work work, test test test, commit commit commit.
 1. Create a new branch on our fork and push these commits there.
 ```
 git push -u origin add_huskies_to_uw
 ```
 1. Go to fork on GitHub and create a PR into the main repo using the website.
-1. wait for comments.
-1. fix comments and commit.
-1. Push comments to the same branch and automaticallly update the same PR
+1. Wait for comments.
+1. Fix comments and commit.
+1. Push comments to the same branch and automaticallly update the same PR.
 ```
 git push origin add_huskies_to_uw
 ```
-`git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
+1. `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
 # Some useful commands
 Below is a code block for reference. It includes the most basic git commands you will
 use in approximately the order you will need them to complete the workflow introduced below. If it's your first time
 here, skip this block and finish reading the workflow doc first.
-```git
+```
 git remote add <name> <remote url>  # add a remote
 git remote -v  # list all remotes
 git remote update  # update remotes
