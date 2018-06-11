@@ -5,6 +5,7 @@ please go to [full git documentation](https://guides.github.com/). Also Google a
 
 # Workflow example
 Here is an example of the workflow we will cover.
+
 1. Let's start our new branch on our existing master.
 ```
 git checkout master
@@ -13,7 +14,8 @@ git checkout master
 ```
 git pull upstream master --ff-only
 ```
-1. Assuming the pull was successful make a new branch based on master for our issue fix with memorable name.
+1. Assuming the pull was successful make a new branch based on master for our 
+  issue fix with memorable name.
 ```
 git checkout -b add_huskies_to_uw
 ```
@@ -23,13 +25,13 @@ git checkout -b add_huskies_to_uw
 git push -u origin add_huskies_to_uw
 ```
 1. Go to fork on GitHub and create a PR into the main repo using the website.
-1. Wait for comments.
-1. Fix comments and commit.
+1. Wait for comments, fix comments and commit.
 1. Push comments to the same branch and automaticallly update the same PR.
 ```
 git push origin add_huskies_to_uw
 ```
-1. `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
+  `git push` will also work if you did the `-u` in the earlier push, 
+  which creates a permanent link between the local and fork branch.
 
 # Some useful commands
 Below is a code block for reference. It includes the most basic git commands you will
