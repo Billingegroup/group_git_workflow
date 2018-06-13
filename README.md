@@ -34,12 +34,29 @@ Here is an example of the workflow we will cover.
 
 1. Go to fork on GitHub and create a PR into the main repo using the website.
 1. Wait for comments, fix comments and commit.
-1. Push comments to the same branch and automaticallly update the same PR.
+1. Push comments to the same branch and they will automatically update the same PR
    ```
    git push origin add_huskies_to_uw
    ```
 
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
+
+1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your master branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, these command works:
+   
+   ```
+   git rebase upstream/master
+   ```
+   
+   If there is a serious conflict though things get more complicated. The rebase process with conflict resolution is much easier with pycharm where the process is explained [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html)
+
+1. After your PR is pulled in. You can delete your local branch (save
+   your local space)
+   
+   ```
+   git branch -d add_huskies_to_uw
+   ``` 
+   
+   and you are ready for next cycle of PR!
 
 # Some useful commands
 Below is a code block for reference. It includes the most basic git commands you will
