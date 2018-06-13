@@ -87,7 +87,7 @@ Scopatz and Huff (it is strongly recommended that you get a copy, but we do have
   * As students you can request a free copy of the full production version!
 
 # Step 1: Fork the repository you wish to contribute to
-Forking will allow you to make a `pull-request` (PR) later. We need it for our workflow, even ifit may not be clear now why. `fork` can be done through github website:
+Forking will allow you to make a `pull-request` (PR) later. We need it for our workflow, even if it may not be clear now why. `fork` can be done through github website:
 
 ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
 
@@ -97,7 +97,7 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
 
    ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
   
-1. The link shows here is the identity to this repository. Vlick on the "clipboard icon" to copy the link to your clipboard. You can then copy it and paste to your terminal and do:
+1. The link shows here is the identity to this repository. Click on the "clipboard icon" to copy the link to your clipboard. You can then copy it and paste to your terminal and do:
    
    ```
    git clone <url just copied>
@@ -177,10 +177,10 @@ are literally jumping into another parallel world where files live in *another* 
    ```
 
 # Step 5: Add, commit and push
-1. Before your edits, checkout to a new branch. Since creadting a branch is free on
+1. Before your edits, checkout to a new branch. Since creating a branch is free on
    github, it's **suggested** to keep every branch as granular as possible.
 1. It's also recommended never to edit your local master. Always make a branch and edit that.  Later you will merge it back into master.
-1. Start your edits with your favorite editor (we recommand `PyCharm`).
+1. Start your edits with your favorite editor (we recommend `PyCharm`).
 1. After your edits, commit them to your local git repo. To check current working history:
    
    ```
