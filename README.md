@@ -41,22 +41,23 @@ Here is an example of the workflow we will cover.
 
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
-1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your master branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, these command works:
+1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
    
    ```
    git rebase upstream/master
    ```
    
-   If there is a serious conflict though things get more complicated. The rebase process with conflict resolution is much easier with pycharm where the process is explained [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html)
+   If there is a serious conflict though things get more complicated. The rebase process with conflict resolution is much easier with `PyCharm` where the process is explained in the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html)
 
-1. After your PR is pulled in. You can delete your local branch (save
-   your local space)
+1. After your PR is pulled in. You can delete your local branch and stay
+   nice and organized.
    
    ```
    git branch -d add_huskies_to_uw
    ``` 
    
-   and you are ready for next cycle of PR!
+   You can delete the branch on your fork at `github` website. 
+   Congratulations! You completed your fix. You are now ready to fix your next issue.
 
 # Some useful commands
 Below is a code block for reference. It includes the most basic git commands you will
