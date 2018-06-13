@@ -60,9 +60,8 @@ Here is an example of the workflow we will cover.
    Congratulations! You completed your fix. You are now ready to fix your next issue.
 
 # Some useful commands
-Below is a code block for reference. It includes the most basic git commands you will
-use in approximately the order you will need them to complete the workflow introduced below. If it's your first time
-here, skip this block and finish reading the workflow doc first.
+Below is a code block for reference. It includes some of the most useful git commands you will use to complete the workflow introduced below. If it's your first time here, skip this block and finish reading the workflow below.
+
 ```
 git remote add <name> <remote url>  # add a remote
 git remote -v  # list all remotes
@@ -81,7 +80,7 @@ git push origin <branch_name>  # push local branch to branch on your Fork
 1. You would also need to have [git](https://git-scm.com/) installed on your computer.
 1. Read chapters 15 and 16 of **Effective Computation in Physics** by
 Scopatz and Huff (it is strongly recommended that you get a copy, but we do have).
-1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) because
+1. We also recommend [PyCharm](http://www.jetbrains.com/pycharm/) as an IDE/editor because
   * It's powerful.
   * It makes rebasing much easier.
   * It's widely used in the group, so you can get help easily.
@@ -109,7 +108,10 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
 # Step 3: Set remote and fetch
 1. Navigate to your the directory you just cloned.
 1. As suggested by the name, `remote` means the repository on `github`. With a ``remote`` setup, you are able to compare the difference, push edits to and pull changes with respect to remote(s).
-1. To add a remote:
+1. Your local repo is already connected to the Fork because you cloned it from
+   the fork.  However, you need to connect it to the "upstream" repo that the
+   fork was forked from.   To do this we need to "add a remote" using the
+   following command:
 
    ```
    git remote add <remote name> <url to the github repository>
@@ -132,14 +134,18 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
    git remote rename <old name> <new name>
    ```
 
-1. By convention, we usually set the parent repository of your fork as
-   `upstream`. Because that's where our contribution will go into.
-1. We then sync our local with all remotes. 
+1. By convention, we usually name the remote repo of the parent repository of your fork as
+   `upstream`. 
+1. If we want to get any changes from remote repositories onto our local
+   computer, we can use the following commands: 
    
    ```
    git remote update #update all remotes
    git fetch <remote name> #update certain remote
    ```
+
+   These won't affect our local branch but will make the remote changes
+   available if we want to merge or compare.
 
 # Step4: Branch
 Branches are like virtual environments. Each of them has its own working history that is
@@ -163,12 +169,19 @@ are literally jumping into another parallel world where files live in *another* 
    git checkout -b <new branch name>
    ```
 
+1. Next, make sure your local master is synced with the upstream master (VERY
+   IMPORTANT...can avoid lots of headaches later).  You can update your local ``master`` by:
+   
+   ```
+   git merge --ff-only upstream production #update your local master
+   ```
+
 # Step 5: Add, commit and push
 1. Before your edits, checkout to a new branch. Since creadting a branch is free on
    github, it's **suggested** to keep every branch as granular as possible.
-1. It's also recommended to leave your local master untouched. The main reason will be explained later in the `Pull request` section.
+1. It's also recommended never to edit your local master. Always make a branch and edit that.  Later you will merge it back into master.
 1. Start your edits with your favorite editor (we recommand `PyCharm`).
-1. After your edits, put your works into the working tree. To check current working history:
+1. After your edits, commit them to your local git repo. To check current working history:
    
    ```
    git status
@@ -209,8 +222,9 @@ are literally jumping into another parallel world where files live in *another* 
    ```
 
 # Step 6: Pull request
-Assume you have gone through all the steps and pushed your works onto
-your fork but we haven't had any interaction with `upstream` yet. It's always nice to have a second opinion on our works and `pull request(PR)` turns out to be a good way of doing this.
+The final step is to get your changes incorporated into the parent (upstream)
+repo.  You can't just push them there because you could cause all kinds of
+problems.  Instead, you issue a `pull request` (PR).
 
 `pull request` means you are requesting people to consider your edits and github
 makes it very easy to compare edits.
@@ -222,7 +236,7 @@ makes it very easy to compare edits.
    ![alt text](https://github.com/chiahaoliu/group_git_workflow/blob/doc_gitworkflow/img/create_PR.png "")
 
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
-1. You can alway update your PR by pushing new edits to the same branch under your fork.
+1. You can always update your PR by pushing new edits to the same branch under your fork.
 
 # Step 7: Merge after PR is pulled in
 1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``master`` branch clean - because we want to make it always aligned with `upstream`.
