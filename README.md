@@ -1,10 +1,15 @@
-# Getting started with git workflow
+# Getting started with the Billinge-Group git workflow
 
-This page is aimed to be a simplified version of github help. For complete workflow,
-please go to [full git documentation](https://guides.github.com/). Also Google and [stackoverflow](https://stackoverflow.com/) is incredibly helpful.
+This page summarizes the git workflow we use in the Billinge Group.
+It is not supposed to teach you how to use git. It is based on the numpy
+workflow.  For more on git, GitHub and git workflows,
+please go to [full git documentation](https://guides.github.com/). Also
+Google and [stackoverflow](https://stackoverflow.com/) is incredibly helpful.
 
 # Workflow example
-Here is an example of the workflow we will cover.
+Here is a brief example of the workflow we will cover.  you can refer back to
+this later whenever you want.  If this is your first time through, jump to
+Section Step 0 below where things are discussed in more detail.
 
 1. Let's start our new branch on our existing master.
 
