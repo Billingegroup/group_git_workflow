@@ -126,7 +126,7 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
 1. To view which remotes your local repository is synced to: 
 
    ```
-   git remote -a
+   git remote -v
    ```
 
    And you might see something similar to this
