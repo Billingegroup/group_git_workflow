@@ -49,10 +49,13 @@ Section Step 0 below where things are discussed in more detail.
 1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
    
    ```
+   git fetch upstream master
    git rebase upstream/master
    ```
    
-   If there is a serious conflict though things get more complicated. The rebase process with conflict resolution is much easier with `PyCharm` where the process is explained in the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html)
+   The first step fetches any upstream changes to your local computer but doesn't
+   apply them.  If there is a serious conflict though things get more complicated.
+   The rebase process with conflict resolution is much easier with `PyCharm` where the process is explained in the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html)
 
 1. After your PR is pulled in. You can delete your local branch and stay
    nice and organized.
