@@ -246,7 +246,51 @@ makes it very easy to compare edits.
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
 1. You can always update your PR by pushing new edits to the same branch under your fork.
 
-# Step 7: Merge after PR is pulled in
+# Step 7: Rebasing 
+
+### Command Line
+
+1. Make sure you've fetched upstream master
+   
+   ```
+   git fetch upstream master
+   ```
+1. Rebase in interactive mode
+
+   ```
+   git rebase upstream/master -i
+   ```
+1. If you have messy commits, flag them with the squash thing. If there's only one
+conflicing commit, just `ctrl-x` out of the interactive window/message. You 
+should see an error message saying that the patch couldn't be applied.
+
+1. Check where the conflict happened
+
+   ```
+   git status
+   ```
+1. Open the conflicting file with the diff >>>>>>>/======= things.
+
+   Search for `<<<<<<<< HEAD` and starting from here until `=====` is what upstream
+   master has which is conflicting with local. Delete these two lines if everything
+   looks okay, and also delete the `>>>>>>>>` line with the commit ID. Save the
+   file. 
+
+   ```
+   git add <path to edited and previously conflicting file>
+   ```
+1. Don't commit, continue the rebase.
+
+   ```
+   git rebase --continue
+   ```
+1. Asks for the commit message which applies for the rebasing. Leave unchanged if you want.
+   ```
+   git push <remote> <rebased branch> -f
+   ```
+
+
+# Step 8: Merge after PR is pulled in
 1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``master`` branch clean - because we want to make it always aligned with `upstream`.
 1. After your PR is merged, you can update your local ``master`` by:
    
