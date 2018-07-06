@@ -260,31 +260,57 @@ makes it very easy to compare edits.
    ```
    git rebase upstream/master -i
    ```
-1. If you have messy commits, flag them with the squash thing. If there's only one
-conflicing commit, just `ctrl-x` out of the interactive window/message. You 
-should see an error message saying that the patch couldn't be applied.
+
+1. You will be brought into your system editor (depends on your configuration, could be `vim`, 
+   `nano` or other ones), with instruction from `git`.
+   ```
+   pick <commit message 1>
+   pick <commit message 2>
+   ...
+
+   # Rebase <your current commit> onto <last commit on upstream/master> (1 command)
+   #
+   # Commands:
+   # p, pick = use commit
+   # r, reword = use commit, but edit the commit message
+   # e, edit = use commit, but stop for amending
+   # s, squash = use commit, but meld into previous commit
+   # f, fixup = like "squash", but discard this commit's log message
+   # x, exec = run command (the rest of the line) using shell
+   # d, drop = remove commit
+   ```
+
+   As shown in the instructions, you may `squash` a few commits together if you want to keep 
+   the history neat. Other options may be used and picking all commits is totally fine too.
+
+   Once you are satisfied with the commit history, simply quit your editor (depends on the 
+   editor, it is `ctrl+x` in `nano` and `:wq` in `vim`)  and `git` will start rebasing.
+
+   If you see `Successfully rebase to...`, congrats, you don't need to do more edits. 
+   Just jump to the last step of this section. If you see something like `the patch couldn't be applied..`, 
+   then we have to follow the steps below to fix them.
 
 1. Check where the conflict happened
 
    ```
    git status
    ```
-1. Open the conflicting file with the diff >>>>>>>/======= things.
-
-   Search for `<<<<<<<< HEAD` and starting from here until `=====` is what upstream
-   master has which is conflicting with local. Delete these two lines if everything
-   looks okay, and also delete the `>>>>>>>>` line with the commit ID. Save the
-   file. 
+1. Open the conflicting file with your favorite editor and search for `>>>>>>>` or `=====`.
+   Starting from `<<<<<<<< HEAD`  until `=====` is what upstream master has which is conflicting
+   with your local branch. Delete these two lines if everything looks okay, and also delete the 
+   `>>>>>>>>` line with the commit ID. Note that redundant lines or other errors may be contained
+   in the diff, so don't blindly delete the lines. Save the file. 
 
    ```
    git add <path to edited and previously conflicting file>
    ```
-1. Don't commit, continue the rebase.
+1. Don't commit, continue the rebase. This will ask for the commit message which applies for rebasing. 
+   Edit in your terminal text editor or leave as is. 
 
    ```
    git rebase --continue
    ```
-1. Asks for the commit message which applies for the rebasing. Leave unchanged if you want.
+1. Push the changes to the branch for your PR.
    ```
    git push <remote> <rebased branch> -f
    ```
