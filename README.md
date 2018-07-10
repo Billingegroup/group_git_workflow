@@ -204,7 +204,7 @@ are literally jumping into another parallel world where files live in *another* 
 
    ```
    git add <path to files you want to add>
-   git add -all # add all edited files shows in git status
+   git add --all # (or git add -A) add all edited files shows in git status
    ```
 
 1. After adding files into history, we want to `commit` the changes. To commit your edits.
