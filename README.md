@@ -246,7 +246,77 @@ makes it very easy to compare edits.
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
 1. You can always update your PR by pushing new edits to the same branch under your fork.
 
-# Step 7: Merge after PR is pulled in
+# Step 7: Rebasing 
+
+### Command Line
+
+1. Make sure you've fetched upstream master
+   
+   ```
+   git fetch upstream master
+   ```
+1. Rebase in interactive mode
+
+   ```
+   git rebase upstream/master -i
+   ```
+
+1. You will be brought into your system editor (depends on your configuration, could be `vim`, 
+   `nano` or other ones), with instruction from `git`.
+   ```
+   pick <commit message 1>
+   pick <commit message 2>
+   ...
+
+   # Rebase <your current commit> onto <last commit on upstream/master> (1 command)
+   #
+   # Commands:
+   # p, pick = use commit
+   # r, reword = use commit, but edit the commit message
+   # e, edit = use commit, but stop for amending
+   # s, squash = use commit, but meld into previous commit
+   # f, fixup = like "squash", but discard this commit's log message
+   # x, exec = run command (the rest of the line) using shell
+   # d, drop = remove commit
+   ```
+
+   As shown in the instructions, you may `squash` a few commits together if you want to keep 
+   the history neat. Other options may be used and picking all commits is totally fine too.
+
+   Once you are satisfied with the commit history, simply quit your editor (depends on the 
+   editor, it is `ctrl+x` in `nano` and `:wq` in `vim`)  and `git` will start rebasing.
+
+   If you see `Successfully rebase to...`, congrats, you don't need to do more edits. 
+   Just jump to the last step of this section. If you see something like `the patch couldn't be applied..`, 
+   then we have to follow the steps below to fix them.
+
+1. Check where the conflict happened
+
+   ```
+   git status
+   ```
+1. Open the conflicting file with your favorite editor and search for `>>>>>>>` or `=====`.
+   Starting from `<<<<<<<< HEAD`  until `=====` is what upstream master has which is conflicting
+   with your local branch. Delete these two lines if everything looks okay, and also delete the 
+   `>>>>>>>>` line with the commit ID. Note that redundant lines or other errors may be contained
+   in the diff, so don't blindly delete the lines. Save the file. 
+
+   ```
+   git add <path to edited and previously conflicting file>
+   ```
+1. Don't commit, continue the rebase. This will ask for the commit message which applies for rebasing. 
+   Edit in your terminal text editor or leave as is. 
+
+   ```
+   git rebase --continue
+   ```
+1. Push the changes to the branch for your PR.
+   ```
+   git push <remote> <rebased branch> -f
+   ```
+
+
+# Step 8: Merge after PR is pulled in
 1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``master`` branch clean - because we want to make it always aligned with `upstream`.
 1. After your PR is merged, you can update your local ``master`` by:
    
