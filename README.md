@@ -248,18 +248,18 @@ makes it very easy to compare edits.
 
 
 # Step 7: Rebase
-Sometimes you may find `github` shows `This branch has conflicts that
+Sometimes you may find `Github` shows `This branch has conflicts that
 must be resolved` in your PR page. This simply means the remote branch 
 this PR is based on is in a different working history as `upstream\master`. 
-`github` provides a button in the PR page to solve the conflict, 
+`Github` provides a button in the PR page to solve the conflict, 
 but **DO NOT** use this approach since it creates an extra commit 
 and could further divert you away from `upstream\master`. 
 For this situation, the step you need is **rebase**. Rebasing can be
-carried out on the command-line using git commands (described later) but
+carried out on the command-line using `git` commands (described later) but
 it is much easier using a python IDE with built-in rebasing tools, such
 as our good friend `PyCharm`. Here we reproduce the steps to do the rebase
 using `PyCharm`. It will be slightly different if you are using a
-different IDE. Look lower down if you want to do it directly with Git.
+different IDE. Look lower down if you want to do it directly with `Git`.
 
 1. Make sure that you are on the branch that you are actively working
    on and want to rebase. If not,
@@ -356,7 +356,7 @@ different IDE. Look lower down if you want to do it directly with Git.
 
    ```
 
-   because you have changed the git commit history. Be very careful when force pushing. 
+   because you have changed the `git` commit history. Be very careful when force pushing. 
    In general you only ever do it to your fork, and you should only need it after a rebase.
 
 
