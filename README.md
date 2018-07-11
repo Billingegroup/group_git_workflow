@@ -23,7 +23,7 @@ Section Step 0 below where things are discussed in more detail.
    git pull upstream master --ff-only
    ```
 
-1. Assuming the pull was successful make a new branch based on master for our 
+1. Assuming the pull was successful make a new branch based on master for our
   issue fix with memorable name.
 
    ```
@@ -47,24 +47,24 @@ Section Step 0 below where things are discussed in more detail.
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
 1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
-   
+
    ```
    git fetch upstream master
    git rebase upstream/master
    ```
-   
+
    The first step fetches any upstream changes to your local computer but doesn't
    apply them.  If there is a serious conflict though things get more complicated.
    The rebase process with conflict resolution is much easier with `PyCharm` where the process is explained in the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html) or even better, you can reference our documentation below (Step 7).
 
 1. After your PR is pulled in. You can delete your local branch and stay
    nice and organized.
-   
+
    ```
    git branch -d add_huskies_to_uw
-   ``` 
-   
-   You can delete the branch on your fork at `github` website. 
+   ```
+
+   You can delete the branch on your fork at `github` website.
    Congratulations! You completed your fix. You are now ready to fix your next issue.
 
 # Some useful commands
@@ -73,7 +73,7 @@ Below is a code block for reference. It includes some of the most useful git com
 ```
 git remote add <name> <remote url>  # add a remote
 git remote -v  # list all remotes
-git remote update  # update and sync with remote branches 
+git remote update  # update and sync with remote branches
 git branch # list all local branches
 git branch -a  # list all available branches
 git checkout <branch name>  # check out an already existing branch. only check out local branches
@@ -97,16 +97,16 @@ Scopatz and Huff (it is strongly recommended that you get a copy, but we do have
 # Step 1: Fork the repository you wish to contribute to
 Forking will allow you to make a `pull-request` (PR) later. We need it for our workflow, even if it may not be clear now why. `fork` can be done through github website:
 
-![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_fork.png "")
+![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_fork.png "")
 
 # Step 2: Clone the git repository to local machine
 1. Go to your fork on GitHub.
 1. Click on the green **clone or download** button at the top-right corner:
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_clone.png "")
-  
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_clone.png "")
+
 1. The link shows here is the identity to this repository. Click on the "clipboard icon" to copy the link to your clipboard. You can then copy it and paste to your terminal and do:
-   
+
    ```
    git clone <url just copied>
    ```
@@ -126,7 +126,7 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
    ```
 
    `url to the github repository` can be obtained as we did in the `clone` section and `remote name` can be any name that is meaningful (easy to remember) to you.
-1. To view which remotes your local repository is synced to: 
+1. To view which remotes your local repository is synced to:
 
    ```
    git remote -v
@@ -134,7 +134,7 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
 
    And you might see something similar to this
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_remote_v.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_remote_v.png "")
 
 1. By default `origin` is always set to the repository you cloned. You can rename any `remote` by doing:
 
@@ -143,10 +143,10 @@ Forking will allow you to make a `pull-request` (PR) later. We need it for our w
    ```
 
 1. By convention, we usually name the remote repo of the parent repository of your fork as
-   `upstream`. 
+   `upstream`.
 1. If we want to get any changes from remote repositories onto our local
-   computer, we can use the following commands: 
-   
+   computer, we can use the following commands:
+
    ```
    git remote update #update all remotes
    git fetch <remote name> #update certain remote
@@ -160,26 +160,26 @@ Branches are like virtual environments. Each of them has its own working history
 synced with certain `remote`. Once you ``checkout`` (switch) your branch, you
 are literally jumping into another parallel world where files live in *another* history.
 1. To list all available branches (including ones from all remotes):
-   
+
    ```
    git branch -a
    ```
 
 1. To checkout (switch) to any branch available branch:
-   
+
    ```
    git checkout <branch name>
    ```
 
 1. To create a new branch based on **current** branch:
-   
+
    ```
    git checkout -b <new branch name>
    ```
 
 1. Next, make sure your local master is synced with the upstream master (VERY
    IMPORTANT...can avoid lots of headaches later).  You can update your local ``master`` by:
-   
+
    ```
    git merge --ff-only upstream production #update your local master
    ```
@@ -190,12 +190,12 @@ are literally jumping into another parallel world where files live in *another* 
 1. It's also recommended never to edit your local master. Always make a branch and edit that.  Later you will merge it back into master.
 1. Start your edits with your favorite editor (we recommend `PyCharm`).
 1. After your edits, commit them to your local git repo. To check current working history:
-   
+
    ```
    git status
    ```
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_status.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_status.png "")
 
    Here you see we have ``Untracked files`` and ``Changes not staged for commit``. The difference between them is as following.
 1. `Git` is all about version control so while you are working you might edit existing files or you might create a new file, which hasn't been included into the working tree yet. The newly created file will be listed as `Untracked files`.
@@ -208,15 +208,15 @@ are literally jumping into another parallel world where files live in *another* 
    ```
 
 1. After adding files into history, we want to `commit` the changes. To commit your edits.
-   
+
    ```
    git commit # this will open the core editor currently used by git
    git commit -m "<commit message>"
    ```
 
    Usually `git commit` will bring you to something similar to this screen shot:
-   
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_commit.png "")
+
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_commit.png "")
 
    The first line is a brief of your commit. It shouldn't be more than a line.
    Starting from the third line, it is the main body of your commit message. You can be as detailed as you want.
@@ -224,7 +224,7 @@ are literally jumping into another parallel world where files live in *another* 
 1. You can also use ``git diff`` to see detailed difference between current commit and the last commit.
 1. Then we are ready to push our hard work back to `remote`. To push our
    local version to a specific branch in a given remote:
-   
+
    ```
    git push <remote name> <branch name>
    ```
@@ -239,9 +239,9 @@ makes it very easy to compare edits.
 
 1. PR makes it easy to compare difference and start discussions. To issue a PR through github web page:
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/issue_PR.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/issue_PR.png "")
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/create_PR.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/create_PR.png "")
 
 1. After issuing a PR, other developers can view your edits, add comment and eventually decide whether to pull in your PR.
 1. You can always update your PR by pushing new edits to the same branch under your fork.
@@ -249,11 +249,11 @@ makes it very easy to compare edits.
 
 # Step 7: Rebase
 Sometimes you may find `Github` shows `This branch has conflicts that
-must be resolved` in your PR page. This simply means the remote branch 
-this PR is based on is in a different working history as `upstream\master`. 
-`Github` provides a button in the PR page to solve the conflict, 
-but **DO NOT** use this approach since it creates an extra commit 
-and could further divert you away from `upstream\master`. 
+must be resolved` in your PR page. This simply means the remote branch
+this PR is based on is in a different working history as `upstream\master`.
+`Github` provides a button in the PR page to solve the conflict,
+but **DO NOT** use this approach since it creates an extra commit
+and could further divert you away from `upstream\master`.
 For this situation, the step you need is **rebase**. Rebasing can be
 carried out on the command-line using `git` commands (described later) but
 it is much easier using a python IDE with built-in rebasing tools, such
@@ -275,23 +275,23 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    ```
 
 1. Make active (by clicking on it) an open file that is on your active branch as in the following figure.
-   
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase0.png "")
+
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase0.png "")
 
    In this case `institutions.yml` is active
 
 1. Left click on `Git: <branch name>` in the lower right of the
    `PyCharm` window.
-1. A list of all the linked repositories and branches will pop up. If you click on any of them, 
-   it will give a list of possible actions regarding that branch.  In the example in the Figure 
-   the branch checked out is `british_drug_cos` and after clicking on that I selected 
-   `upstream/master`.  The options are to `check-out`, `compare with`, `merge onto current`, 
+1. A list of all the linked repositories and branches will pop up. If you click on any of them,
+   it will give a list of possible actions regarding that branch.  In the example in the Figure
+   the branch checked out is `british_drug_cos` and after clicking on that I selected
+   `upstream/master`.  The options are to `check-out`, `compare with`, `merge onto current`,
    `delete`, and of interest here `rebase current onto selected`, which is what we want to do
 1. Select `rebase current onto selected` which will rebase
-   `british_drug_cos` branch onto the latest fetched version of `upstream/master` 
+   `british_drug_cos` branch onto the latest fetched version of `upstream/master`
    which is exactly what we want to do.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase1.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase1.png "")
 
 1. `PyCharm` starts the rebase by going and looking for all the commits
    from upstream that are missing on our branch.  While it works, it
@@ -301,12 +301,12 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    make all the rebasing updates, then restore them back into the directory
    at the end.  I don’t have to do anything.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase2.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase2.png "")
 
 1. Now `PyCharm` finds a commit in the commit chain that has a conflict
    with the edits on my branch, so a new window pops up with this information in it. I click merge.
-   
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase3.png "")
+
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase3.png "")
 
 1. Now a handy window pops up that has my branch version on the left,
    the upstream/master version on the right, and the merged version in
@@ -316,18 +316,18 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    on the one that has green arrows from the left and right, and `PyCharm`
    accepts **ALL** these changes.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase4.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase4.png "")
 
 1. Either I can then navigate to the next (the first in this case)
    conflict by clicking a down-arrow, or in this case `PyCharm` does it
    automatically.  Conflicts appear in red.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase5.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase5.png "")
 
 1. This conflict is easy to resolve because the upstream change is a
    new item, so I want to accept it.  I do that by clicking the `<<` sign on the right.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase6.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase6.png "")
 
 1. Now the conflicting edit in my version is just a carriage return
    on the end of the line.  I could click `>>` and it would also be
@@ -339,38 +339,38 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    changes and finish merging”.  I click on this to accept the changes, or
    I could click on Apply in the lower corner.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase7.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase7.png "")
 
 1. `PyCharm` continues the rebase, looking for the next conflicted commit
    and all the steps above are repeated, until we get through all the
    commits.  Then `PyCharm` says `rebase successful`.
 
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase8.png "")
+   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase8.png "")
 
 1. You are all done!  Well done.  But don’t forget to push your
    rebased branch to your fork to update the PR.  This may have to be a
-   force-push (--force) 
+   force-push (--force)
 
    ```
    git push origin <branch name> --force
 
    ```
 
-   because you have changed the `git` commit history. Be very careful when force pushing. 
+   because you have changed the `git` commit history. Be very careful when force pushing.
    In general you only ever do it to your fork, and you should only need it after a rebase.
 
 
 # Step 8: Merge after PR is pulled in
 1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``master`` branch clean - because we want to make it always aligned with `upstream`.
 1. After your PR is merged, you can update your local ``master`` by:
-   
+
    ```
    git checkout master #checkout to local master
    git merge --ff-only upstream production #update your local master
    ```
 
 1. Now your local ``master`` branch is updated and if you want to work on other features, you can:
-   
+
    ```
    git checkout -b <new branch name> #switch to a new branch
    ```
@@ -383,4 +383,3 @@ minor difficulties during your work. Please be patient and follow the instructio
 
 # Advanced reference:
 [19 Tips For Everyday Git Use](http://www.alexkras.com/19-git-tips-for-everyday-use/)
-
