@@ -249,10 +249,20 @@ makes it very easy to compare edits.
 
 # Step 7: Rebase
 Sometimes you may find `github` shows `This branch has conflicts that
-must be resolved` in your PR page. This simply means the remote branch this PR is based on is in a different working history as `upstream\master`. `github` provides a button in the PR page to solve the conflict, but **DO NOT** use this approach since it creates an extra commit and could further divert you away from `upstream\master`. For this situation, the step you need is **rebase**. Here are steps of rebase with our good friend `PyCharm`.
+must be resolved` in your PR page. This simply means the remote branch 
+this PR is based on is in a different working history as `upstream\master`. 
+`github` provides a button in the PR page to solve the conflict, 
+but **DO NOT** use this approach since it creates an extra commit 
+and could further divert you away from `upstream\master`. 
+For this situation, the step you need is **rebase**. Rebasing can be
+carried out on the command-line using git commands (described later) but
+it is much easier using a python IDE with built-in rebasing tools, such
+as our good friend `PyCharm`. Here we reproduce the steps to do the rebase
+using `PyCharm`. It will be slightly different if you are using a
+different IDE. Look lower down if you want to do it directly with Git.
 
 1. Make sure that you are on the branch that you are actively working
-   on. If not,
+   on and want to rebase. If not,
 
    ```
    git checkout <branch name>
@@ -264,7 +274,7 @@ must be resolved` in your PR page. This simply means the remote branch this PR i
    git fetch upstream master
    ```
 
-1. Make active (by clicking on it) an open file that is on your active branch as following figure.
+1. Make active (by clicking on it) an open file that is on your active branch as in the following figure.
    
    ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/doc_gitworkflow/img/git_rebase0.png "")
 
@@ -275,7 +285,7 @@ must be resolved` in your PR page. This simply means the remote branch this PR i
 1. A list of all the linked repositories and branches will pop up. If you click on any of them, 
    it will give a list of possible actions regarding that branch.  In the example in the Figure 
    the branch checked out is `british_drug_cos` and after clicking on that I selected 
-   `upstream/master`.  The options are to “check-out”, “compare with”, `merge onto current`, 
+   `upstream/master`.  The options are to `check-out`, `compare with`, `merge onto current`, 
    `delete`, and of interest here `rebase current onto selected`, which is what we want to do
 1. Select `rebase current onto selected` which will rebase
    `british_drug_cos` branch onto the latest fetched version of `upstream/master` 
