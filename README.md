@@ -46,7 +46,7 @@ Section Step 0 below where things are discussed in more detail.
 
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
-1. If you see that your PR has a conflict on the main page, it means that the master branch of the main repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
+1. If you see that your PR has a conflict on the main page, it means that the `master` branch of the `upstream` repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
 
    ```
    git fetch upstream master
@@ -55,7 +55,10 @@ Section Step 0 below where things are discussed in more detail.
 
    The first step fetches any upstream changes to your local computer but doesn't
    apply them.  If there is a serious conflict though things get more complicated.
-   The rebase process with conflict resolution is much easier with `PyCharm` where the process is explained in the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/apply-changes-from-one-branch-to-another.html) or even better, you can reference our documentation below (Step 7).
+   If the conflict is complicated and you are not sure if you can solve the conflict with pure `git` commands, 
+   you can always do `git rebase --abort` to abort the process and revert to the status before rebasing.
+   The rebase process with conflict resolution is much easier with `PyCharm`, for situations with serious conflicts, 
+   you can reference to **Step 7: Rebase** section below.
 
 1. After your PR is pulled in. You can delete your local branch and stay
    nice and organized.
