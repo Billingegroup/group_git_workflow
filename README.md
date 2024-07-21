@@ -46,19 +46,20 @@ Section Step 0 below where things are discussed in more detail.
 
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
-1. If you see that your PR has a conflict on the main page, it means that the `main` branch of the `upstream` repo has diverged from your local branch. You need to "rebase your branch onto the upstream/main branch". You might be lucky and, on your branch, this command works:
+1. If you see that your PR has a conflict on the main page, it means that the `main` branch of the `upstream` repo has diverged from your local branch. You need to merge `main` into your branch and manually fix the conflicts. You might be lucky and, on your branch, this command works:
 
    ```
    git fetch upstream main
-   git rebase upstream/main
+   git merge upstream/main
    ```
 
    The first step fetches any upstream changes to your local computer but doesn't
    apply them.  If there is a serious conflict though things get more complicated.
    If the conflict is complicated and you are not sure if you can solve the conflict with pure `git` commands, 
-   you can always do `git rebase --abort` to abort the process and revert to the status before rebasing.
-   The rebase process with conflict resolution is much easier with `PyCharm`, for situations with serious conflicts, 
-   you can reference to **Step 7: Rebase** section below.
+   you can always do `git rebase --abort` to abort the process and revert to the status before starting the merge.
+   
+   The merge with conflict resolution processis much easier with `PyCharm`, for situations with serious conflicts, 
+   you can reference to **Step 7: Conflicts** section below.
 
 1. After your PR is pulled in. You can delete your local branch and stay
    nice and organized.
@@ -84,6 +85,7 @@ git checkout -b <new branch name> # check out to new branch based on current bra
 git add <filename>  # add changes into working history
 git commit -m "CODE: <my commit message>  # commit changes
 git push origin <branch_name>  # push local branch to branch on your Fork
+git branch --merged  # list all the branches whose commits are fully merged and can therefore be deleted without worry
 ```
 
 # Step 0: get all required tools and reference
@@ -250,22 +252,24 @@ makes it very easy to compare edits.
 1. You can always update your PR by pushing new edits to the same branch under your fork.
 
 
-# Step 7: Rebase
+# Step 7: Conflicts
 Sometimes you may find `Github` shows `This branch has conflicts that
 must be resolved` in your PR page. This simply means the remote branch
 this PR is based on is in a different working history as `upstream\main`.
 `Github` provides a button in the PR page to solve the conflict,
 but **DO NOT** use this approach since it creates an extra commit
 and could further divert you away from `upstream\main`.
-For this situation, the step you need is **rebase**. Rebasing can be
+
+For this situation, the step you need is to merge upstream into your local branch,
+manually resolving the conflicts. Rebasing can be
 carried out on the command-line using `git` commands (described later) but
 it is much easier using a python IDE with built-in rebasing tools, such
-as our good friend `PyCharm`. Here we reproduce the steps to do the rebase
-using `PyCharm`. It will be slightly different if you are using a
+as our good friend `PyCharm`. Here we reproduce the steps to do the conflict
+resolution using `PyCharm`. It will be slightly different if you are using a
 different IDE. Look lower down if you want to do it directly with `Git`.
 
 1. Make sure that you are on the branch that you are actively working
-   on and want to rebase. If not,
+   on and want to merge to. If not,
 
    ```
    git checkout <branch name>
@@ -283,35 +287,21 @@ different IDE. Look lower down if you want to do it directly with `Git`.
 
    In this case `institutions.yml` is active
 
-1. Left click on `Git: <branch name>` in the lower right of the
-   `PyCharm` window.
-1. A list of all the linked repositories and branches will pop up. If you click on any of them,
-   it will give a list of possible actions regarding that branch.  In the example in the Figure
-   the branch checked out is `british_drug_cos` and after clicking on that I selected
-   `upstream/main`.  The options are to `check-out`, `compare with`, `merge onto current`,
-   `delete`, and of interest here `rebase current onto selected`, which is what we want to do
-1. Select `rebase current onto selected` which will rebase
-   `british_drug_cos` branch onto the latest fetched version of `upstream/main`
-   which is exactly what we want to do.
-
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase1.png "")
-
-1. `PyCharm` starts the rebase by going and looking for all the commits
-   from upstream that are missing on our branch.  While it works, it
-   tells us what it is doing in the center-bottom of the page.  Here it is
-   first `stashing changes from rg-db-public` because I had made some
-   changes that I hadn’t committed.  `PyCharm` will ask git to stash them,
-   make all the rebasing updates, then restore them back into the directory
-   at the end.  I don’t have to do anything.
-
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase2.png "")
-
-1. Now `PyCharm` finds a commit in the commit chain that has a conflict
-   with the edits on my branch, so a new window pops up with this information in it. I click merge.
-
-   ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase3.png "")
-
-1. Now a handy window pops up that has my branch version on the left,
+1. checkout the branch in your terminal
+2. type `git pull upstream main`
+3. Click on your `PyCharm` window and open the file that has conflicts
+1. `PyCharm` should detect that there are conflicts and offer you the chance to resolve
+   the conflicts. Accept and it will open a window that allows you to select things from
+   main and also from your local.
+1. As a general rule, make sure the accept everything from main as those are things that have
+   been reviewed and merged.
+1. Accept anything from local that is not conflicted
+2. Resolve conflicts as best as you can by making good decisions.  If you are not sure
+   reach out and ask Simon or another experienced person.  It is much easier to
+   discuss and resolve things correctly at this point than fixing bugs introduce
+   by bad merges later.
+1. As an exapmle, here are some screenshots. A handy window pops up that has my
+   branch version on the left,
    the upstream/main version on the right, and the merged version in
    the middle.  I want to accept all the changes that don’t raise
    conflicts.  These appear in green, and I can accept them all by clicking
@@ -344,23 +334,18 @@ different IDE. Look lower down if you want to do it directly with `Git`.
 
    ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase7.png "")
 
-1. `PyCharm` continues the rebase, looking for the next conflicted commit
+1. `PyCharm` continues the merge, looking for the next conflicted commit
    and all the steps above are repeated, until we get through all the
-   commits.  Then `PyCharm` says `rebase successful`.
+   commits.  Then `PyCharm` says `merge successful`.
 
    ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase8.png "")
 
 1. You are all done!  Well done.  But don’t forget to push your
-   rebased branch to your fork to update the PR.  This may have to be a
-   force-push (--force)
+   rebased branch to your fork to update the PR.
 
    ```
-   git push origin <branch name> --force
-
+   git push origin <branch name> 
    ```
-
-   because you have changed the `git` commit history. Be very careful when force pushing.
-   In general you only ever do it to your fork, and you should only need it after a rebase.
 
 
 # Step 8: Merge after PR is pulled in
