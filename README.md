@@ -11,19 +11,19 @@ Here is a brief example of the workflow we will cover.  you can refer back to
 this later whenever you want.  If this is your first time through, jump to
 Section Step 0 below where things are discussed in more detail.
 
-1. Let's start our new branch on our existing master.
+1. Let's start our new branch on our existing main.
 
    ```
-   git checkout master
+   git checkout main
    ```
 
-1. Let's make sure our local master is up to date with the upstream master.
+1. Let's make sure our local main is up to date with the upstream main.
 
    ```
-   git pull upstream master --ff-only
+   git pull upstream main --ff-only
    ```
 
-1. Assuming the pull was successful make a new branch based on master for our
+1. Assuming the pull was successful make a new branch based on main for our
   issue fix with memorable name.
 
    ```
@@ -46,11 +46,11 @@ Section Step 0 below where things are discussed in more detail.
 
    `git push` will also work if you did the `-u` in the earlier push, which creates a permanent link between the local and fork branch.
 
-1. If you see that your PR has a conflict on the main page, it means that the `master` branch of the `upstream` repo has diverged from your local branch. You need to "rebase your branch onto the upstream/master branch". You might be lucky and, on your branch, this command works:
+1. If you see that your PR has a conflict on the main page, it means that the `main` branch of the `upstream` repo has diverged from your local branch. You need to "rebase your branch onto the upstream/main branch". You might be lucky and, on your branch, this command works:
 
    ```
-   git fetch upstream master
-   git rebase upstream/master
+   git fetch upstream main
+   git rebase upstream/main
    ```
 
    The first step fetches any upstream changes to your local computer but doesn't
@@ -180,17 +180,17 @@ are literally jumping into another parallel world where files live in *another* 
    git checkout -b <new branch name>
    ```
 
-1. Next, make sure your local master is synced with the upstream master (VERY
-   IMPORTANT...can avoid lots of headaches later).  You can update your local ``master`` by:
+1. Next, make sure your local main is synced with the upstream main (VERY
+   IMPORTANT...can avoid lots of headaches later).  You can update your local ``main`` by:
 
    ```
-   git merge --ff-only upstream production #update your local master
+   git merge --ff-only upstream production #update your local main
    ```
 
 # Step 5: Add, commit and push
 1. Before your edits, checkout to a new branch. Since creating a branch is free on
    github, it's **suggested** to keep every branch as granular as possible.
-1. It's also recommended never to edit your local master. Always make a branch and edit that.  Later you will merge it back into master.
+1. It's also recommended never to edit your local main. Always make a branch and edit that.  Later you will merge it back into main.
 1. Start your edits with your favorite editor (we recommend `PyCharm`).
 1. After your edits, commit them to your local git repo. To check current working history:
 
@@ -253,10 +253,10 @@ makes it very easy to compare edits.
 # Step 7: Rebase
 Sometimes you may find `Github` shows `This branch has conflicts that
 must be resolved` in your PR page. This simply means the remote branch
-this PR is based on is in a different working history as `upstream\master`.
+this PR is based on is in a different working history as `upstream\main`.
 `Github` provides a button in the PR page to solve the conflict,
 but **DO NOT** use this approach since it creates an extra commit
-and could further divert you away from `upstream\master`.
+and could further divert you away from `upstream\main`.
 For this situation, the step you need is **rebase**. Rebasing can be
 carried out on the command-line using `git` commands (described later) but
 it is much easier using a python IDE with built-in rebasing tools, such
@@ -274,7 +274,7 @@ different IDE. Look lower down if you want to do it directly with `Git`.
 1. Make sure you have all the upstream updates on your local computer
 
    ```
-   git fetch upstream master
+   git fetch upstream main
    ```
 
 1. Make active (by clicking on it) an open file that is on your active branch as in the following figure.
@@ -288,10 +288,10 @@ different IDE. Look lower down if you want to do it directly with `Git`.
 1. A list of all the linked repositories and branches will pop up. If you click on any of them,
    it will give a list of possible actions regarding that branch.  In the example in the Figure
    the branch checked out is `british_drug_cos` and after clicking on that I selected
-   `upstream/master`.  The options are to `check-out`, `compare with`, `merge onto current`,
+   `upstream/main`.  The options are to `check-out`, `compare with`, `merge onto current`,
    `delete`, and of interest here `rebase current onto selected`, which is what we want to do
 1. Select `rebase current onto selected` which will rebase
-   `british_drug_cos` branch onto the latest fetched version of `upstream/master`
+   `british_drug_cos` branch onto the latest fetched version of `upstream/main`
    which is exactly what we want to do.
 
    ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase1.png "")
@@ -312,7 +312,7 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    ![alt text](https://github.com/Billingegroup/group_git_workflow/blob/master/img/git_rebase3.png "")
 
 1. Now a handy window pops up that has my branch version on the left,
-   the upstream/master version on the right, and the merged version in
+   the upstream/main version on the right, and the merged version in
    the middle.  I want to accept all the changes that don’t raise
    conflicts.  These appear in green, and I can accept them all by clicking
    on one of the icons with green arrows in the top tools panel.  I click
@@ -336,7 +336,7 @@ different IDE. Look lower down if you want to do it directly with `Git`.
    on the end of the line.  I could click `>>` and it would also be
    accepted, and placed after the other one, or in this case it is probably
    better to click X to not accept it, since it seems that the
-   `upstream/master` edit already has a line-end in it.  Great.  If there
+   `upstream/main` edit already has a line-end in it.  Great.  If there
    were more conflicts to resolve I could navigate through them, but this
    was the last so a message pops up “all changes have been processed, save
    changes and finish merging”.  I click on this to accept the changes, or
@@ -364,15 +364,15 @@ different IDE. Look lower down if you want to do it directly with `Git`.
 
 
 # Step 8: Merge after PR is pulled in
-1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``master`` branch clean - because we want to make it always aligned with `upstream`.
-1. After your PR is merged, you can update your local ``master`` by:
+1. After your PR is pulled in, your hard works have been merged into `upstream` but your local copy hasn't been updated. So that is the reason why we want to keep local ``main`` branch clean - because we want to make it always aligned with `upstream`.
+1. After your PR is merged, you can update your local ``main`` by:
 
    ```
-   git checkout master #checkout to local master
-   git merge --ff-only upstream production #update your local master
+   git checkout main #checkout to local main
+   git merge --ff-only upstream production #update your local main
    ```
 
-1. Now your local ``master`` branch is updated and if you want to work on other features, you can:
+1. Now your local ``main`` branch is updated and if you want to work on other features, you can:
 
    ```
    git checkout -b <new branch name> #switch to a new branch
